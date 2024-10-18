@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, sans-serif;
+  font-weight: 900;
+  height: 100vh;
+}
+.container {
+  height: 100%;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.container .content {
+  font-size: 10vw;
+}
+.container .date {
+  font-size: 7vw;
+}
+.container > .counter {
+  font-size: 23vw;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
