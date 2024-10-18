@@ -3,7 +3,7 @@ let rootElement;
 
 document.addEventListener("DOMContentLoaded", function () {
   params = getUrlParams();
-  rootElement = document.getElementById("ddayCounter");
+  rootElement = document.getElementById("dDayCounter");
 
   initializeDdayCounterApp();
 });
