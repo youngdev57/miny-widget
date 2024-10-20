@@ -44,18 +44,16 @@ const setDate = () => {
   const date = params.get("date");
 
   const year = parseInt(date.slice(0, 4), 10);
-  const month = parseInt(date.slice(4, 6), 10) - 1;
+  const month = parseInt(date.slice(4, 6), 10);
   const day = parseInt(date.slice(6), 10);
 
-  let targetDate = new Date(year, month, day);
+  rootElement.querySelector(".date").textContent =
+    `${year}-${month}-${day}` ?? "";
 
+  let targetDate = new Date(year, month - 1, day);
   const diff = getDaysDifference(targetDate.toLocaleDateString());
 
-  const formattedDate = targetDate.toISOString().split("T")[0];
-  rootElement.querySelector(".date").textContent = formattedDate ?? "";
-
-  console.log(diff);
   const prefix = diff > 0 ? "D+" : "D";
-  const dday = diff === 0 ? "Today" : prefix + diff;
+  const dday = diff === 0 ? "TODAY" : prefix + diff;
   rootElement.querySelector(".counter").textContent = dday;
 };
