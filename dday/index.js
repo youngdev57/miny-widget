@@ -31,12 +31,12 @@ const setContent = () => {
 };
 
 const setDate = () => {
-  function getDaysDifference(targetDate, currentDate) {
+  function getDaysDifference(targetDate) {
     let startDate = new Date(targetDate);
-    let endDate = new Date(currentDate);
+    let today = new Date();
 
-    let timeDiff = endDate.getTime() - startDate.getTime();
-    let daysDiff = timeDiff / (1000 * 60 * 60 * 24);
+    const gap = today - startDate;
+    const daysDiff = Math.floor(gap / (1000 * 60 * 60 * 24));
 
     return daysDiff;
   }
@@ -47,17 +47,15 @@ const setDate = () => {
   const month = parseInt(date.slice(4, 6), 10) - 1;
   const day = parseInt(date.slice(6), 10);
 
-  let currentDate = new Date();
   let targetDate = new Date(year, month, day);
 
-  const diff = getDaysDifference(
-    targetDate.toLocaleDateString(),
-    currentDate.toLocaleDateString()
-  );
+  const diff = getDaysDifference(targetDate.toLocaleDateString());
 
   const formattedDate = targetDate.toISOString().split("T")[0];
   rootElement.querySelector(".date").textContent = formattedDate ?? "";
 
+  console.log(diff);
   const prefix = diff > 0 ? "D+" : "D";
-  rootElement.querySelector(".counter").textContent = prefix + diff;
+  const dday = diff === 0 ? "Today" : prefix + diff;
+  rootElement.querySelector(".counter").textContent = dday;
 };
