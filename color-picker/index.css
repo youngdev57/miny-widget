@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, sans-serif;
+  font-weight: 900;
+  height: 100vh;
+}
+
+.container {
+  height: 100%;
+  padding: 3% 5%;
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+  box-sizing: border-box;
+}
+
+.container > div {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#palette {
+  flex: 1;
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+#text {
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
+  padding: 5% 10%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  font-size: 8vw;
+  color: #aaa;
+  font-weight: 900;
+}
+
+#copyButton {
+  height: 50%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 8vw;
+  font-weight: 900;
+  color: royalblue;
+  background-color: #f5f6f8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#copyButton:hover {
+  color: #f5f6f8;
+  background: royalblue;
+}
+
+input[type="color"] {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
