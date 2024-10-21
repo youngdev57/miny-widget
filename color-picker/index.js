@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
     navigator.clipboard
       .writeText(hex)
       .then(() => {
-        button.textContent = "COPIED!";
+        button.textContent = "✔";
         setTimeout(resetText, 1000);
       })
       .catch((error) => {
-        button.textContent = "ERROR!";
+        button.textContent = "ERROR";
         setTimeout(resetText, 1000);
       });
   });
