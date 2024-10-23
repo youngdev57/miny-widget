@@ -25,6 +25,7 @@ body {
   flex: 1;
   height: 100%;
   border: 1px solid #ccc;
+  border-radius: 0 !important;
 }
 
 #text {
@@ -36,6 +37,7 @@ body {
   font-size: 7vw;
   color: #aaa;
   font-weight: 600;
+  border-radius: 0 !important;
 }
 
 #copyButton {
