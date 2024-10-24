@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
+  handleClickCopyButton();
+});
+
+const handleClickCopyButton = () => {
   const button = document.getElementById("copyButton");
 
   button.addEventListener("click", function () {
@@ -6,20 +10,32 @@ document.addEventListener("DOMContentLoaded", function () {
       button.textContent = "COPY";
     }
 
+    function fallbackCopy(hex) {
+      const button = document.getElementById("copyButton");
+
+      try {
+        const isCopied = document.execCommand("copy");
+        button.textContent = isCopied ? "✔" : "ERROR";
+      } catch (error) {
+        button.textContent = "ERROR";
+      }
+
+      setTimeout(resetText, 1000);
+    }
+
     const hex = document.getElementById("text").value;
 
-    navigator.clipboard
-      .writeText(hex)
-      .then(() => {
-        button.textContent = "✔";
-        setTimeout(resetText, 1000);
-      })
-      .catch((error) => {
-        button.textContent = "ERROR";
-        setTimeout(resetText, 1000);
-      });
+    if (navigator.clipboard) {
+      navigator.clipboard
+        .writeText(hex)
+        .then(() => {
+          button.textContent = "✔";
+          setTimeout(resetText, 1000);
+        })
+        .catch((error) => fallbackCopy(hex));
+    }
   });
-});
+};
 
 const onChnageHex = () => {
   const hex = document.getElementById("text").value;
