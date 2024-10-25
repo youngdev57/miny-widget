@@ -59,6 +59,6 @@ const setDate = () => {
   const diff = getDaysDifference(targetDate);
 
   const prefix = diff > 0 ? "D+" : "D";
-  const dday = diff === 0 ? "TODAY" : prefix + Math.abs(diff);
+  const dday = diff === 0 ? "TODAY" : prefix + diff;
   rootElement.querySelector(".counter").textContent = dday;
 };
