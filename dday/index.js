@@ -32,16 +32,21 @@ const setContent = () => {
 
 const setDate = () => {
   function getDaysDifference(targetDate) {
-    let startDate = new Date(targetDate);
     let today = new Date();
 
-    const gap = today - startDate;
+    const gap = today - targetDate;
     const daysDiff = Math.floor(gap / (1000 * 60 * 60 * 24));
 
     return daysDiff;
   }
 
   const date = params.get("date");
+
+  if (!date || date.length !== 8) {
+    console.error("Invalid Date: ", date);
+    rootElement.querySelector(".date").textContent = "Invalid Date";
+    rootElement.querySelector(".counter").textContent = "ERROR";
+  }
 
   const year = parseInt(date.slice(0, 4), 10);
   const month = parseInt(date.slice(4, 6), 10);
@@ -51,9 +56,9 @@ const setDate = () => {
     `${year}-${month}-${day}` ?? "";
 
   let targetDate = new Date(year, month - 1, day);
-  const diff = getDaysDifference(targetDate.toLocaleDateString());
+  const diff = getDaysDifference(targetDate);
 
   const prefix = diff > 0 ? "D+" : "D";
-  const dday = diff === 0 ? "TODAY" : prefix + diff;
+  const dday = diff === 0 ? "TODAY" : prefix + Math.abs(diff);
   rootElement.querySelector(".counter").textContent = dday;
 };
